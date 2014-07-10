@@ -1,5 +1,5 @@
 function NumberOperations () {
-	var cache = new Object();
+	var _cache = {};
 
 	var _methodSignPair = {'add': '+', 'minus': '-'}; 
 
@@ -9,24 +9,24 @@ function NumberOperations () {
 		opsign = _methodSignPair[opsign];
 
 		var abkey = a + opsign + b;
-		if (this.isABPairContainCache(a,b, opsign) == true){
-			result = cache[abkey];
+		if (this.isABPairContain_cache(a,b, opsign) === true){
+			result = _cache[abkey];
 		}
 		else
 		{
 			var exeString = a + opsign + b;
-			result = eval(exeString);
-			//save in cache
-			cache[abkey] = result;
+			result = eval(exeString); //надо убрать
+			//save in _cache
+			_cache[abkey] = result;
 		}
 		return result;
 	}
 
-	this.isABPairContainCache = function(a, b, op){
+	this.isABPairContain_cache = function(a, b, op){
 		var result = false;
-		var abkeys = [a + op + b, b + op + a];
+		var abkeys = [a + op + b];
 		for (var abkey in abkeys) {
-			if (cache[abkey]){
+			if (_cache[abkey]){
 				result = true;
 				break;
 			}

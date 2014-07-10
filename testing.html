@@ -3,22 +3,14 @@
 	<title>Test numbers operations</title>
 	<style type="text/css" src="styles.css"></style>
 	<script type="text/javascript" src="number.js"></script>
+	<script type="text/javascript" src="appManager.js"></script>
 	<script type="text/javascript">
 		var operationsManager = new NumberOperations();
+		var appManager = new AppManager();
 
 		window.onload = function () {
 			var refOnTest = document.getElementById('test_ref');
-			refOnTest.addEventListener( 'click', runOperations, false);
-		}
-
-		function runOperations () {
-			var a = parseInt(document.getElementById('a').value);
-			var b = parseInt(document.getElementById('b').value);
-			var idsTds4Results = ['add', 'minus'];
-			for (var key in idsTds4Results) {
-				var tdId = idsTds4Results[key];
-				document.getElementById(tdId).innerHTML = operationsManager.operation(a, b,tdId);
-			};
+			refOnTest.addEventListener( 'click', appManager.run(), false);
 		}
 	</script>
 </head>
