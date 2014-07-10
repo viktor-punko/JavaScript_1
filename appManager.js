@@ -1,6 +1,6 @@
 function AppManager () { //strict mode
 
-	this.run = function () {
+	this.run = function (operationsManager, document) {
 		var a = parseInt(document.getElementById('a').value);
 		var b = parseInt(document.getElementById('b').value);
 		var idsTds4Results = ['add', 'minus'];

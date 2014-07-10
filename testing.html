@@ -10,7 +10,11 @@
 
 		window.onload = function () {
 			var refOnTest = document.getElementById('test_ref');
-			refOnTest.addEventListener( 'click', appManager.run(), false);
+			refOnTest.addEventListener( 'click', 
+				function () {
+					appManager.run(operationsManager, document)
+				}, false
+			);
 		}
 	</script>
 </head>
