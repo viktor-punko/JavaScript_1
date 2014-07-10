@@ -1,30 +1,21 @@
 function NumberOperations () {
 	var cache = new Object();
 
-	this.add = function (a, b) {
-		var result;
-		var abkey = a + '+' + b;
-		if (this.isABPairContainCache(a,b, "+") == true){
-			result = cache[abkey];
-		}
-		else
-		{
-			result = a + b;
-			//save in cache
-			cache[abkey] = result;
-		}
-		return result;
-	}
+	var _methodSignPair = {'add': '+', 'minus': '-'}; 
 
-	this.minus = function (a, b) {
+	this.operation = function (a, b, opsign) {
 		var result;
-		var abkey = a + '-' + b;
-		if (this.isABPairContainCache(a,b, "-") == true){
+
+		opsign = _methodSignPair[opsign];
+
+		var abkey = a + opsign + b;
+		if (this.isABPairContainCache(a,b, opsign) == true){
 			result = cache[abkey];
 		}
 		else
 		{
-			result = a - b;
+			var exeString = a + opsign + b;
+			result = eval(exeString);
 			//save in cache
 			cache[abkey] = result;
 		}

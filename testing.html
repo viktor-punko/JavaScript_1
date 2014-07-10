@@ -17,7 +17,7 @@
 			var idsTds4Results = ['add', 'minus'];
 			for (var key in idsTds4Results) {
 				var tdId = idsTds4Results[key];
-				document.getElementById(tdId).innerHTML = operationsManager[tdId](a, b);
+				document.getElementById(tdId).innerHTML = operationsManager.operation(a, b,tdId);
 			};
 		}
 	</script>
