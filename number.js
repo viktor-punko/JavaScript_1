@@ -4,7 +4,7 @@ function NumberOperations () {
 	this.add = function (a, b) {
 		var result;
 		var abkey = a + '+' + b;
-		if (isABPairContainCache(a,b, "+") == true){
+		if (this.isABPairContainCache(a,b, "+") == true){
 			result = cache[abkey];
 		}
 		else
