@@ -1,32 +1,33 @@
 <html>
 <head>
 	<title>Test numbers operations</title>
+	<style type="text/css" src="styles.css"></style>
 	<script type="text/javascript" src="number.js"></script>
 	<script type="text/javascript">
 		var operationsManager = new NumberOperations();
 
-		function initializeOperationManager(){
-			operationsManager = new NumberOperations();
-			console.log("init");
+		window.onload = function () {
+			var refOnTest = document.getElementById('test_ref');
+			refOnTest.addEventListener( 'click', runOperations, false);
 		}
 
 		function runOperations () {
-			var a = document.getElementById('a').value;
-			var b = document.getElementById('b').value;
-			var idsTds4Results = ['add'];
+			var a = parseInt(document.getElementById('a').value);
+			var b = parseInt(document.getElementById('b').value);
+			var idsTds4Results = ['add', 'minus'];
 			for (var key in idsTds4Results) {
 				var tdId = idsTds4Results[key];
-				document.getElementById(tdId).textContent = operationsManager[tdId](a, b);
+				document.getElementById(tdId).innerHTML = operationsManager[tdId](a, b);
 			};
 		}
 	</script>
 </head>
-<body onload="initializeOperationManager()">
+<body>
 	<h1>Type two numbers:</h1>
-	<input id="a" type="number" name="number_a" min="1" max="1000">
-	<input id="b" type="number" name="number_b" min="1" max="1000">
+	<input id="a" type="number" name="number_a" min="1" max="1000000">
+	<input id="b" type="number" name="number_b" min="1" max="1000000">
 	<p>
-		<a href="" onclick="runOperations()">Test</a>
+		<a href="#" id="test_ref" >Test</a>
 	</p>
 
 	<table>
@@ -39,7 +40,12 @@
 		<tbody>
 			<tr>
 				<td>A + B</td>
-				<td id="add" style="width: 50px;"></td>
+				<td id="add"></td>
+			</tr>
+
+			<tr>
+				<td>A - B</td>
+				<td id="minus"></td>
 			</tr>
 		</tbody>
 	</table>
