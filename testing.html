@@ -1,0 +1,43 @@
+<html>
+<head>
+	<title>Test numbers operations</title>
+	<script type="text/javascript" src="number.js"></script>
+	<script type="text/javascript">
+		var operationsManager = new NumberOperations();
+
+		function initializeOperationManager(){
+			operationsManager = new NumberOperations();
+			console.log("init");
+		}
+
+		function runOperations () {
+			alert("Trundes");
+			var a = document.getElementById('a').value;
+			var b = document.getElementById('b').value;
+			console.log("a=" + a + "  b=" + b);
+			var addResult = operationsManager.add(a, b);
+			console.log("Result = " + addResult);
+		}
+	</script>
+</head>
+<body onload="initializeOperationManager()">
+	<h1>Type two numbers:</h1>
+	<input id="a" type="number" name="number_a" min="1" max="1000">
+	<input id="b" type="number" name="number_b" min="1" max="1000">
+	<a href="" onclick="runOperations()">Test</a>
+	<table>
+		<thead>
+			<tr>
+				<td>Operation</td>
+				<td>Result</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>A + B</td>
+				<td id="add" style="width: 50px;"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

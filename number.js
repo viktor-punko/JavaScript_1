@@ -1,16 +1,17 @@
-function NumberOperation () {
+function NumberOperations () {
 	var cache = new Object();
 
 	this.add = function (a, b) {
 		var result;
+		var abkey = a + '+' + b;
 		if (isABPairContainCache(a,b, "+") == true){
-
+			result = cache[abkey];
 		}
 		else
 		{
 			result = a + b;
 			//save in cache
-			cache[a + "+" + b] = result;
+			cache[abkey] = result;
 		}
 		return result;
 	}
