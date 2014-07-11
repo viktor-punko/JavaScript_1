@@ -1,36 +1,65 @@
-function NumberOperations () {
+function Calculator () {
 	var _cache = {};
+	var _isResultFromCache = false;
 
-	var _methodSignPair = {'add': '+', 'minus': '-'}; 
+	this.islastResultFromCache = function () {
+		return _isResultFromCache;
+	}
 
-	this.operation = function (a, b, opsign) {
+	this.operation = function (a, b, operationName) {
 		var result;
 
-		opsign = _methodSignPair[opsign];
-
-		var abkey = a + opsign + b;
-		if (this.isABPairContain_cache(a,b, opsign) === true){
-			result = _cache[abkey];
+		var cacheKey = a + operationName + b;
+		if ( this.isOperandPairContainInCache(a, b, operationName)){
+			result = _cache[cacheKey];
+			_isResultFromCache = true;
 		}
 		else
 		{
-			var exeString = a + opsign + b;
-			result = eval(exeString); //надо убрать
+			result = this[operationName](a, b);
 			//save in _cache
-			_cache[abkey] = result;
+			_cache[cacheKey]      = result;
+			_isResultFromCache = false;
 		}
 		return result;
 	}
 
-	this.isABPairContain_cache = function(a, b, op){
+	this.isOperandPairContainInCache = function (a, b, op){
 		var result = false;
-		var abkeys = [a + op + b];
-		for (var abkey in abkeys) {
-			if (_cache[abkey]){
+		var cacheKeys = [a + op + b];
+
+		if (op === 'add' || op === 'multipe' ){
+			cacheKeys.push(b + op + a)
+		}
+
+		for (var key in cacheKeys) {
+			if (_cache[key]){
 				result = true;
 				break;
 			}
 		};
+
 		return result;
 	}
+
+	//Operation methods:
+	this.add = function (a, b) {
+		return a + b;
+	};
+
+	this.minus = function (a, b) {
+		return a - b;
+	}
+
+	this.multipe = function (a, b) {
+		return a * b;
+	}
+
+	this.division = function (a, b) {
+		return a / b;
+	}
+
+	this.pow = function (a, b) {
+		return Math.pow(a, b);
+	}	
 }

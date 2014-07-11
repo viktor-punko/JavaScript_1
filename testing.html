@@ -5,45 +5,40 @@
 	<script type="text/javascript" src="number.js"></script>
 	<script type="text/javascript" src="appManager.js"></script>
 	<script type="text/javascript">
-		var operationsManager = new NumberOperations();
+		var calculator = new Calculator();
 		var appManager = new AppManager();
 
 		window.onload = function () {
-			var refOnTest = document.getElementById('test_ref');
-			refOnTest.addEventListener( 'click', 
+			var calculateButton = document.getElementById('calculate');
+			calculateButton.addEventListener( 'click', 
 				function () {
-					appManager.run(operationsManager, document)
+					appManager.run(calculator, document)
 				}, false
 			);
 		}
 	</script>
 </head>
 <body>
-	<h1>Type two numbers:</h1>
-	<input id="a" type="number" name="number_a" min="1" max="1000000">
-	<input id="b" type="number" name="number_b" min="1" max="1000000">
+	<input id="first_operand" type="number" min="1" max="1000000">
+
+	<select id="operation_select">
+		<option value="add">+</option>
+		<option value="minus">-</option>
+		<option value="multipe">*</option>
+		<option value="division">/</option>
+		<option value="pow">^</option>				
+	</select>
+
+	<input id="second_operand" type="number" min="1" max="1000000">
+
 	<p>
-		<a href="#" id="test_ref" >Test</a>
+		<button id="calculate">Calculate</button>
 	</p>
 
-	<table>
-		<thead>
-			<tr>
-				<td>Operation</td>
-				<td>Result</td>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>A + B</td>
-				<td id="add"></td>
-			</tr>
+	<p id="result_calculation">
 
-			<tr>
-				<td>A - B</td>
-				<td id="minus"></td>
-			</tr>
-		</tbody>
-	</table>
+	</p>
+
+	
 </body>
 </html>

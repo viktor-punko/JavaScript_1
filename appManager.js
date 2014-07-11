@@ -1,14 +1,14 @@
 function AppManager () { //strict mode
 
-	this.run = function (operationsManager, document) {
-		var a = parseInt(document.getElementById('a').value);
-		var b = parseInt(document.getElementById('b').value);
-		var idsTds4Results = ['add', 'minus'];
+	this.run = function (calculator, document) {
+		var firstOperand  = parseInt(document.getElementById('first_operand').value);
+		var secondOperand = parseInt(document.getElementById('second_operand').value);
 		
-		for (var key in idsTds4Results) {
-			var tdId = idsTds4Results[key];
-			document.getElementById(tdId).innerHTML = operationsManager.operation(a, b,tdId);
-		};
+		var operationName = document.getElementsByTagName('select')[0].value;
+
+		document.getElementById('result_calculation').innerHTML = 
+		calculator.operation(firstOperand, secondOperand, operationName);
+		
 	}
 	
 }

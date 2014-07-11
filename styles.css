@@ -1,3 +1,7 @@
-tbody td{
-	width: 50px;
+select{
+	font-size: 54px;
+}
+
+#result_calculation{
+	font-size: 30px;
 }
