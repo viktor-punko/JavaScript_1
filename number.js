@@ -1,4 +1,5 @@
 function Calculator () {
+	"use strict";
 	var _cache = {};
 	var _isResultFromCache = false;
 
@@ -17,7 +18,7 @@ function Calculator () {
 		else
 		{
 			result = this[operationName](a, b);
-			//save in _cache
+
 			_cache[cacheKey]      = result;
 			_isResultFromCache = false;
 		}
@@ -33,7 +34,7 @@ function Calculator () {
 		}
 
 		for (var key in cacheKeys) {
-			if (_cache[key]){
+			if (_cache[cacheKeys[key]]){
 				result = true;
 				break;
 			}

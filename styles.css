@@ -2,6 +2,9 @@ select{
 	font-size: 54px;
 }
 
+#operation_select{
+	width: 92px !important;
+}
 #result_calculation{
 	font-size: 30px;
 }
