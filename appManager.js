@@ -1,5 +1,5 @@
 function AppManager () { 
-	"use strict";
+	'use strict';
 	this.run = function (calculator, document) {
 		document.getElementById('from_cache').style.display = '';
 		var firstOperand  = parseInt(document.getElementById('first_operand').value);
@@ -8,13 +8,15 @@ function AppManager () {
 		var operationName = document.getElementsByTagName('select')[0].value;
 
 		document.getElementById('result_calculation').innerHTML = 
-		calculator.operation(firstOperand, secondOperand, operationName);
-		if (calculator.islastResultFromCache() === true){
-			document.getElementById('from_cache').innerHTML = "Result from cache";
+			calculator.operation(firstOperand, secondOperand, operationName);
+
+		var message = '';
+		if (calculator.islastResultFromCache()){
+			message = 'Result from cache';
 		}
 		else{
-			document.getElementById('from_cache').innerHTML = "Result calculated";
+			message = 'Result calculated';
 		}
-	}
-	
+		document.getElementById('from_cache').innerHTML = message;
+	};
 }

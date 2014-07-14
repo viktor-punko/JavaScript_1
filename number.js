@@ -1,36 +1,42 @@
 function Calculator () {
-	"use strict";
+	'use strict';
+
 	var _cache = {};
 	var _isResultFromCache = false;
+	var _operations = {'operation_0': 'add', 'operation_1': 'sub', 
+		'operation_2': 'multipe', 'operation_3': 'division', 
+		'operation_4': 'pow'};
 
 	this.islastResultFromCache = function () {
 		return _isResultFromCache;
-	}
+	};
+
 
 	this.operation = function (a, b, operationName) {
 		var result;
+		var functionName = _operations[operationName];
 
 		var cacheKey = a + operationName + b;
-		if ( this.isOperandPairContainInCache(a, b, operationName)){
+		_isResultFromCache = this.isCached(a, b, operationName);
+		if ( _isResultFromCache ){
 			result = _cache[cacheKey];
-			_isResultFromCache = true;
 		}
 		else
 		{
-			result = this[operationName](a, b);
-
-			_cache[cacheKey]      = result;
-			_isResultFromCache = false;
+			result = this[functionName](a, b);
+			_cache[cacheKey] = result;
 		}
-		return result;
-	}
 
-	this.isOperandPairContainInCache = function (a, b, op){
+		return result;
+	};
+
+
+	this.isCached = function (a, b, op){
 		var result = false;
 		var cacheKeys = [a + op + b];
 
 		if (op === 'add' || op === 'multipe' ){
-			cacheKeys.push(b + op + a)
+			cacheKeys.push(b + op + a);
 		}
 
 		for (var key in cacheKeys) {
@@ -41,26 +47,26 @@ function Calculator () {
 		};
 
 		return result;
-	}
+	};
 
 	//Operation methods:
 	this.add = function (a, b) {
 		return a + b;
 	};
 
-	this.minus = function (a, b) {
+	this.sub = function (a, b) {
 		return a - b;
-	}
+	};
 
 	this.multipe = function (a, b) {
 		return a * b;
-	}
+	};
 
 	this.division = function (a, b) {
 		return a / b;
-	}
+	};
 
 	this.pow = function (a, b) {
 		return Math.pow(a, b);
-	}	
+	};	
 }
