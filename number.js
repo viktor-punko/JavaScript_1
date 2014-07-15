@@ -3,9 +3,9 @@ function Calculator () {
 
 	var _cache = {};
 	var _isResultFromCache = false;
-	var _operations = {'operation_0': 'add', 'operation_1': 'sub', 
-		'operation_2': 'multipe', 'operation_3': 'division', 
-		'operation_4': 'pow'};
+	var _operations = {'add': _add, 'sub': _sub, 
+		'multipe': _multiple, 'division': _division, 
+		'pow': _pow};
 
 	this.islastResultFromCache = function () {
 		return _isResultFromCache;
@@ -50,23 +50,23 @@ function Calculator () {
 	};
 
 	//Operation methods:
-	this.add = function (a, b) {
+	function _add(a, b) {
 		return a + b;
-	};
+	}
 
-	this.sub = function (a, b) {
+	function _sub(a, b) {
 		return a - b;
-	};
+	}
 
-	this.multipe = function (a, b) {
+	function _multiple(a, b) {
 		return a * b;
-	};
+	}
 
-	this.division = function (a, b) {
+	function _division(a, b) {
 		return a / b;
-	};
+	}
 
-	this.pow = function (a, b) {
+	function _pow(a, b) {
 		return Math.pow(a, b);
-	};	
+	}	
 }
