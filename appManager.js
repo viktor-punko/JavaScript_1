@@ -13,10 +13,10 @@ function AppManager () {
 		var message = '';
 		if (calculator.islastResultFromCache()){
 			message = 'Result from cache';
-		}
-		else{
+		} else {
 			message = 'Result calculated';
 		}
+
 		document.getElementById('from_cache').innerHTML = message;
 	};
 }

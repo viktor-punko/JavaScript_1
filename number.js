@@ -5,25 +5,24 @@ function Calculator () {
 	var _isResultFromCache = false;
 	var _operations = {'add': _add, 'sub': _sub, 
 		'multipe': _multiple, 'division': _division, 
-		'pow': _pow};
+		'pow': _pow, 'log': _log
+	};
 
 	this.islastResultFromCache = function () {
 		return _isResultFromCache;
 	};
 
 
-	this.operation = function (a, b, operationName) {
+	this.operation = function (a, b, operationKey) {
 		var result;
-		var functionName = _operations[operationName];
 
-		var cacheKey = a + operationName + b;
-		_isResultFromCache = this.isCached(a, b, operationName);
+		var cacheKey = a + operationKey + b;
+		_isResultFromCache = this.isCached(a, b, operationKey);
 		if ( _isResultFromCache ){
 			result = _cache[cacheKey];
-		}
-		else
-		{
-			result = this[functionName](a, b);
+		} else {
+			var operationFunction = _operations[operationKey];
+			result = operationFunction(a, b);
 			_cache[cacheKey] = result;
 		}
 
@@ -33,14 +32,15 @@ function Calculator () {
 
 	this.isCached = function (a, b, op){
 		var result = false;
-		var cacheKeys = [a + op + b];
+		var searchedKeys = [a + op + b];
+
 
 		if (op === 'add' || op === 'multipe' ){
-			cacheKeys.push(b + op + a);
+			searchedKeys.push(b + op + a);
 		}
 
-		for (var key in cacheKeys) {
-			if (_cache[cacheKeys[key]]){
+		for (var key in searchedKeys) {
+			if (_cache[searchedKeys[key]]){
 				result = true;
 				break;
 			}
@@ -69,4 +69,8 @@ function Calculator () {
 	function _pow(a, b) {
 		return Math.pow(a, b);
 	}	
+
+	function _log(a, b){
+		return Math.log(a) / Math.log(b);
+	}
 }
