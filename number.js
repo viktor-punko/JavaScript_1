@@ -23,7 +23,7 @@ function Calculator () {
 		}
 		else
 		{
-			result = this[functionName](a, b);
+			result = functionName(a, b);
 			_cache[cacheKey] = result;
 		}
 
@@ -33,14 +33,14 @@ function Calculator () {
 
 	this.isCached = function (a, b, op){
 		var result = false;
-		var cacheKeys = [a + op + b];
+		var searchedKeys = [a + op + b];
 
 		if (op === 'add' || op === 'multipe' ){
-			cacheKeys.push(b + op + a);
+			searchedKeys.push(b + op + a);
 		}
 
-		for (var key in cacheKeys) {
-			if (_cache[cacheKeys[key]]){
+		for (var key in searchedKeys) {
+			if (_cache[searchedKeys[key]]){
 				result = true;
 				break;
 			}
