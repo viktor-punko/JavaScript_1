@@ -60,7 +60,7 @@ function Calculator () {
 		var result = false;
 		var searchedKeys = [a + op + b];
 
-
+		//add revers key for operation: + and *
 		if (op === 'add' || op === 'multipe' ){
 			searchedKeys.push(b + op + a);
 		}
