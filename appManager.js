@@ -1,5 +1,6 @@
 function AppManager () { 
 	'use strict';
+	
 	this.run = function (calculator, document) {
 		document.getElementById('from_cache').style.display = '';
 		var firstOperand  = parseInt(document.getElementById('first_operand').value);

@@ -8,6 +8,32 @@ function Calculator () {
 		'pow': _pow, 'log': _log
 	};
 
+	//Operation methods:
+	function _add(a, b) {
+		return a + b;
+	}
+
+	function _sub(a, b) {
+		return a - b;
+	}
+
+	function _multiple(a, b) {
+		return a * b;
+	}
+
+	function _division(a, b) {
+		return a / b;
+	}
+
+	function _pow(a, b) {
+		return Math.pow(a, b);
+	}	
+
+	function _log(a, b){
+		return Math.log(a) / Math.log(b);
+	}
+
+
 	this.islastResultFromCache = function () {
 		return _isResultFromCache;
 	};
@@ -48,29 +74,4 @@ function Calculator () {
 
 		return result;
 	};
-
-	//Operation methods:
-	function _add(a, b) {
-		return a + b;
-	}
-
-	function _sub(a, b) {
-		return a - b;
-	}
-
-	function _multiple(a, b) {
-		return a * b;
-	}
-
-	function _division(a, b) {
-		return a / b;
-	}
-
-	function _pow(a, b) {
-		return Math.pow(a, b);
-	}	
-
-	function _log(a, b){
-		return Math.log(a) / Math.log(b);
-	}
 }
